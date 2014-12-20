@@ -1,7 +1,25 @@
-#include <iostream>
+#include "Arduino.h"
 
-int main() {
-    std::cout << "Hello world" << std::endl;
-    return 0;
+/// Initialisation.
+void setup()
+{
+
 }
 
+/// Boucle principale.
+void loop()
+{
+
+}
+
+/// Point d'entrée.
+/// Utilisée pour compatibilitée avec Make-Arduino.
+/// TODO : Supprimer
+int main()
+{
+    init();
+    setup();
+    
+    while(true)
+        loop();
+}
