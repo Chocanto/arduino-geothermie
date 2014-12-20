@@ -25,4 +25,5 @@
 *.swp
 *.swo
 
-
+# Zed
+.zedstate

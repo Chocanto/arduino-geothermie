@@ -1,0 +1,15 @@
+Projet Géothermie - Aquisition - Carte Arduino
+
+Utilisation de Arduino-Makefile ( https://github.com/sudar/Arduino-Makefile )
+    Installation    : sudo apt-get install arduino-mk python-serial
+    Compilation     :
+        - Se placer dans le dossier src
+        - make
+        
+Utilisation de doxygen :
+    - Se placer dans le dossier arduino
+    - doxygen
+    = La documentation est generée dans le dossier doc.
+    
+ATTENTION : 
+N'ayant pas d'Arduino à disposition, le téléversement n'as pas été testé.
