@@ -7,13 +7,13 @@ Pin::Pin(int pin)
 
 Pin::Pin(const Pin &pin)
 {
-	*this = pin;
+    *this = pin;
 }
 
 Pin& Pin::operator=(const Pin &pin)
 {
     m_pin = pin.m_pin;
-	return *this;
+    return *this;
 }
 
 int Pin::getPin() const

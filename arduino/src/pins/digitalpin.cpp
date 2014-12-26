@@ -1,21 +1,21 @@
 #include "digitalpin.h"
 
-DigitalPin::DigitalPin(int pin, int iomode) 
+DigitalPin::DigitalPin(int pin, int iomode)
 : Pin(pin), m_iomode(iomode)
 {
-    
+
 }
 
 DigitalPin::DigitalPin(const DigitalPin &digitalpin)
 {
-	*this = digitalpin;
+    *this = digitalpin;
 }
 
 DigitalPin& DigitalPin::operator=(const DigitalPin &digitalpin)
 {
     Pin::operator=(digitalpin);
     m_iomode = digitalpin.m_iomode;
-	return *this;
+    return *this;
 }
 
 int DigitalPin::getIoMode() const
