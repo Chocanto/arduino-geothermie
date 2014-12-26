@@ -2,7 +2,7 @@
 
 void AnalogPin::setup()
 {
-    
+
 }
 
 void AnalogPin::write(int value)

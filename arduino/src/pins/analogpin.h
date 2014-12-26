@@ -10,13 +10,13 @@ namespace pins
 /// Pins analogiques de l'Arduino.
 class AnalogPin : public Pin
 {
-	public:
-	
-	using Pin::Pin;
-	
-	void    setup();
-	void    write(int value);
-	int     read();
+    public:
+    
+    using Pin::Pin;
+
+    void    setup();
+    void    write(int value);
+    int     read();
 };
 
 }
