@@ -59,3 +59,5 @@ CREATE TABLE Donnees(
 	CONSTRAINT FKidCDonnees FOREIGN KEY (idC)
 		REFERENCES Capteur(idC)
 );
+
+SOURCE triggers.sql
