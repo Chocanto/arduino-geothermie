@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>
+			Température - Projet géothermie
+		</title>
+				<!-- chargement du c3.css -->
+		  <link rel="stylesheet" type="text/css" href="css/c3.css">
+
+		  <!-- css perso -->
+		  <link rel="stylesheet" type="text/css" href="css/style.css">
+		  
+		  <!-- chargement d3.js and c3.js -->
+		  <script src="js/d3.min.js" charset="utf-8"></script>
+		  <script src="js/c3.min.js"></script>
+		  
+		  
+		  <!-- tableau de valeur -->
+		  <table id="table" style="width:50%"></table>
+		  <script src="js/fonction.js">  </script>
+	</head>
+	<body>
+		<h1 id="temp">Température : </h1>
+		<br />
+		<br />
+		<p>Projet Géothermie, démo de présentation</p>
+		<div id="chart3"></div>
+	</body>
+	<script>
+	var tab = ['data'];
+	var chart3;
+	readFile();
+	initGraph();
+	function initGraph(){
+		  chart3 = c3.generate({
+	      bindto: '#chart3',
+	      size:{height: 240, width:480},
+	      data: {
+	        columns: [tab],
+	        names:{data:'Temp (°C)'},
+	        colors:{data:'#008000'}
+	      },
+	      // afficher une grille en arrière plan
+	      grid: {
+	        x:{show: true},
+	        y:{show: true}
+	      },
+	      
+	      // deplacer la legend
+	      legend:{position:'right'},
+
+	      // faire disparetre les points
+	      point:{show:false},
+
+	    });
+	}
+	function readFile(){
+		var res=-1
+		var rawFile = new XMLHttpRequest();
+		rawFile.open("GET","test",true);
+		rawFile.onreadystatechange = function() {
+			if (rawFile.readyState===4){
+				if(rawFile.status===200 || rawFile.status==0){
+					var allText=rawFile.responseText;
+					tab.push(allText);
+					document.getElementById("temp").innerHTML = "Température : "+allText+" °C";
+				}
+			}
+		}
+		rawFile.send(null);
+	}
+	function refreshGraph(){
+		readFile();
+		chart3.load({columns: [tab]});
+	}
+	setInterval("refreshGraph()",2000);
+	</script>
+</html>
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						
