@@ -21,9 +21,10 @@ CREATE TABLE Dispositif(
 CREATE TABLE Capteur(
 	idC		INT		(5) PRIMARY KEY AUTO_INCREMENT,
 	idD		INT		(5) NOT NULL,
+        nomC            VARCHAR         (40) NOT NULL,
 	typeC		VARCHAR		(1) NOT NULL,
 	unite		VARCHAR		(5),
-	nivProfond	INT		(5),
+	nivProfond	FLOAT		(5),
 	posXC		INT		(5),
 	posYC		INT		(5),	
 	posZC		INT		(5),
@@ -53,7 +54,7 @@ CREATE TABLE Branchement(
 CREATE TABLE Donnees(
 	idC 		INT		(5) NOT NULL,
 	date 		DATETIME	,
-	valeur		INT		(5),
+	valeur		FLOAT		(5),
 	
 	PRIMARY KEY (idC, date),
 	CONSTRAINT FKidCDonnees FOREIGN KEY (idC)
