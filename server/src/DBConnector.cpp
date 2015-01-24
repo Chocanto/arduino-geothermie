@@ -37,6 +37,20 @@ void DBConnector::connect(string host, string user, string password, string data
 
 }
 
+void DBConnector::disconnect() {
+    try {
+        con->close();   
+        delete con;
+
+        driver->threadEnd();
+        
+        isConnected = false;
+    }
+    catch(SQLException &e) {
+        exception(e);
+    }
+}
+
 void DBConnector::sendValueTest(int idC, int data) {
     try {
         pstmt = con->prepareStatement("INSERT INTO donnees(idC, date, valeur) VALUES(?, ?, ?)");
@@ -45,7 +59,7 @@ void DBConnector::sendValueTest(int idC, int data) {
         pstmt->setInt(3, data);
         pstmt->execute();
         pstmt->close();
-        delete(pstmt);
+        delete pstmt;
     }
     catch(SQLException &e) {
         exception(e);
@@ -66,5 +80,9 @@ string DBConnector::dateTimeToString(DateTime date) {
     return stringStream.str();
 }
 
-
-
+Connection* DBConnector::getConnection() {
+    if (!isConnected)
+        return NULL;
+    else
+        return con;
+}
