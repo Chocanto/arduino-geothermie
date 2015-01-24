@@ -1,11 +1,11 @@
 #include <iostream>
 
 #include "DBConnector.hpp"
+#include "DemoValues.hpp"
 
 int main() {
-    std::cout << "Hello world" << std::endl;
-
-    DBConnector::getInstance().connect("127.0.0.1", "root", "MVAQS1105", "symfony");
+    DBConnector::getInstance().connect("localhost", "interface", "puits", "geothermie");
+    DemoValues *dv = new DemoValues();
+    dv->runDemo();
     return 0;
 }
-

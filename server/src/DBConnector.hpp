@@ -5,9 +5,11 @@
 
 #include <cppconn/driver.h>
 #include <cppconn/connection.h>
-#include <cppconn/statement.h>
+#include <cppconn/prepared_statement.h>
 #include <cppconn/resultset.h>
 #include <cppconn/exception.h>
+
+#include "DateTime.hpp"
 
 using namespace std;
 using namespace sql;
@@ -16,14 +18,19 @@ class DBConnector {
 
     
     public:
+
+        bool isConnected;
+
         static DBConnector& getInstance();
-        void connect(string, string, string, string);
+        void connect(string host, string user, string password, string database);
+        void sendValueTest(int idC, int data);
     
     private:
     
         Driver *driver;
         Connection *con;
         Statement *stmt;
+        PreparedStatement *pstmt;
         ResultSet *rs;
 
         DBConnector();
@@ -31,6 +38,7 @@ class DBConnector {
         void operator=(DBConnector const&);
 
         static void exception(SQLException& );
+        static string dateTimeToString(DateTime date);
 };
 
 #endif
