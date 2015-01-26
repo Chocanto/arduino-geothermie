@@ -51,11 +51,11 @@ void DBConnector::disconnect() {
     }
 }
 
-void DBConnector::sendValueTest(int idC, int data) {
+void DBConnector::sendValueTest(int idC, int data, DateTime dt) {
     try {
-        pstmt = con->prepareStatement("INSERT INTO donnees(idC, date, valeur) VALUES(?, ?, ?)");
+        pstmt = con->prepareStatement("INSERT INTO Donnees(idC, date, valeur) VALUES(?, ?, ?)");
         pstmt->setInt(1, idC);
-        pstmt->setDateTime(2, dateTimeToString(DateTime::now()));
+        pstmt->setDateTime(2, dateTimeToString(dt));
         pstmt->setInt(3, data);
         pstmt->execute();
         pstmt->close();
@@ -64,6 +64,10 @@ void DBConnector::sendValueTest(int idC, int data) {
     catch(SQLException &e) {
         exception(e);
     }
+}
+
+void DBConnector::sendValueTest(int idC, int data) {
+    sendValueTest(idC, data, DateTime::now());
 }
 
 void DBConnector::exception(SQLException &e) {

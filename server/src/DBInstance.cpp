@@ -1,15 +1,19 @@
 #include "DBInstance.hpp"
-#include <cppcon/prepared_statement.h>
-#include <cppcon/connection.h>
+
+#include <string>
+#include <cppconn/prepared_statement.h>
+#include <cppconn/connection.h>
+
+#include "DBConnector.hpp"
 
 DBInstance::DBInstance(string tableName) {
-    this.tableName = tableName;
+    this->tableName = tableName;
 }
 
 string DBInstance::getTableName() {
     return tableName;
 }
 
-PreparedStatement DBInstance::getNewPreparedStatement(string req) {
-    return con->prepareStatement(req);
+PreparedStatement* DBInstance::getNewPreparedStatement(string req) {
+    return DBConnector::getInstance().getConnection()->prepareStatement(req);
 }
