@@ -1,9 +1,12 @@
 #include "PinManager.h"
+#include <serstream>
+#include <sstream>
 
 using namespace std;
+using namespace pins;
 
 PinManager::PinManager(){
-    PinManager::factory = new PinFactor();
+    factory = new PinFactory();
 }
 
 void PinManager::addPin(int pin,int type){
@@ -17,21 +20,23 @@ void PinManager::removePin(int type){
 
 
 void PinManager::clear(){
-    pinList.erase(pinList.begin(), pinList.back());
+    pinList.clear();
 }
 
 
 void PinManager::doMesure(){
-    string mesures="";
+    String mesures="";
     for(int i =0; i<pinList.size();i++){
-        Pin& lePin = pinList.at(i);
-        mesures += lePin.getPin() + "," + lePin.read() + ";";
+        Pin* lePin = pinList.at(i);
+        
+        mesures += String(lePin->getPin()) + "," + String(lePin->read()) + ";";
+        
     }
     send(mesures);
+}
 
-}
-void PinManager::send(string message){
-    Serial.begin(9600);
+void PinManager::send(String message){
+
     Serial.println(message);
-    Serial.end();
 }
+

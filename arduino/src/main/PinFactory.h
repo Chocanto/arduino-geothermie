@@ -13,7 +13,7 @@ namespace pins
 
         public:
 
-            Pin& createPin(int type,int pin);
+            Pin* createPin(int type,int pin);
 
             static const int typeAnalog;
 
@@ -24,3 +24,4 @@ namespace pins
 }
 
 #endif
+

@@ -5,6 +5,8 @@
 #include <string>
 #include "Arduino.h"
 #include "PinFactory.h"
+#include "pin.h"
+
 
 namespace pins
 {
@@ -24,14 +26,17 @@ namespace pins
             void doMesure();
 
         private:
-            PinFactory& factory;
+            PinFactory* factory;
 
-            std::vector<Pin&> pinList;
+            std::vector<Pin*> pinList;
 
-            void send(std::string message);
+            void send(String message);
+            
+            
 
     };
 
 }
 
 #endif
+

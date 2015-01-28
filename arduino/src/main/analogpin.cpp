@@ -1,5 +1,12 @@
 #include "analogpin.h"
 
+using namespace pins;
+
+AnalogPin::AnalogPin(int pin):
+Pin(pin){
+
+}
+
 void AnalogPin::setup()
 {
 
@@ -14,3 +21,4 @@ int AnalogPin::read()
 {
     return analogRead(getPin());
 }
+

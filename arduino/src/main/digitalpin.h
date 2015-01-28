@@ -20,7 +20,7 @@ class DigitalPin : public Pin
     DigitalPin(int pin, int iomode);
 
     /// Constructeur de copie.
-    DigitalPin(const DigitalPin&);
+    /*DigitalPin(const DigitalPin&);*/
 
     /// Opérateur d'assignation.
     DigitalPin& operator=(const DigitalPin&);

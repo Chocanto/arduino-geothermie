@@ -1,15 +1,18 @@
 #include "digitalpin.h"
 
+using namespace pins;
+
 DigitalPin::DigitalPin(int pin, int iomode)
 : Pin(pin), m_iomode(iomode)
 {
 
 }
 
+/*
 DigitalPin::DigitalPin(const DigitalPin &digitalpin)
 {
-    *this = digitalpin;
-}
+    *this = &digitalpin;
+}*/
 
 DigitalPin& DigitalPin::operator=(const DigitalPin &digitalpin)
 {
@@ -41,3 +44,4 @@ int DigitalPin::read()
     else
         return LOW;
 }
+

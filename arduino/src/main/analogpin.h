@@ -12,8 +12,8 @@ class AnalogPin : public Pin
 {
     public:
     
-    using Pin::Pin;
-
+    AnalogPin(int pin);
+    
     void    setup();
     void    write(int value);
     int     read();
@@ -22,3 +22,4 @@ class AnalogPin : public Pin
 }
 
 #endif
+
