@@ -13,10 +13,16 @@ namespace pins
 
         public:
 
+            /// methode qui crée un pin
+            /// param type le type de pin
+            /// param pin le numero du pin
+            /// return le pointeur d'un pin
             Pin* createPin(int type,int pin);
 
+            /// la constante du type analogique
             static const int typeAnalog;
 
+            /// la constante du type numerique
             static const int typeDigital;
 
     };
@@ -24,4 +30,3 @@ namespace pins
 }
 
 #endif
-
