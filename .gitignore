@@ -27,3 +27,6 @@
 
 # Zed
 .zedstate
+
+bin/*
+doc/*
