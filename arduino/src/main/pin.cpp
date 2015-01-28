@@ -1,5 +1,7 @@
 #include "pin.h"
 
+using namespace pins;
+
 Pin::Pin(int pin)
 : m_pin(pin)
 {
@@ -20,3 +22,4 @@ int Pin::getPin() const
 {
     return m_pin;
 }
+
