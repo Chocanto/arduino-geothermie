@@ -35,6 +35,7 @@ CREATE TABLE Capteur(
 CREATE TABLE Arduino(
 	idA		INT		(5) PRIMARY KEY AUTO_INCREMENT,
 	nom		VARCHAR		(30),
+        adMac           VARCHAR         (17) UNIQUE NOT NULL,
 	nbPAnalog	INT		(2),
 	nbPNum		INT		(2)
 );
