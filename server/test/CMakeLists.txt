@@ -17,7 +17,9 @@ endif()
 enable_testing()
 
 add_executable(test_mysql TestMysql.cpp)
-
 target_link_libraries(test_mysql ${LIBS} pthread server4tests)
-
 add_test(test_mysql bin/test_mysql)
+
+add_executable(test_pins TestPins.cpp)
+target_link_libraries(test_pins ${LIBS} pthread server4tests)
+add_test(test_pins bin/test_pins)
