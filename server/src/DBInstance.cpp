@@ -16,7 +16,13 @@ string DBInstance::getTableName() const {
 }
 
 PreparedStatement* DBInstance::getNewPreparedStatement(string req) const {
-    return DBConnector::getInstance().getConnection()->prepareStatement(req);
+    if (DBConnector::getInstance().isConnected) {
+        return DBConnector::getInstance().getConnection()->prepareStatement(req);
+    }
+    else {
+        throw new std::runtime_error("Database is not connected");
+        return NULL;
+    }
 }
 
 int DBInstance::getLastInsertId() {

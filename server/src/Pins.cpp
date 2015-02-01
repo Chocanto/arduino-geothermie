@@ -1,10 +1,12 @@
 #include <iostream>
 #include <cppconn/resultset.h>
 #include <cppconn/prepared_statement.h>
+#include <cppconn/exception.h>
 
 #include "Pin.hpp"
 #include "Pins.hpp"
 #include "DBInstance.hpp"
+#include "DBConnector.hpp"
 
 using namespace std;
 using namespace sql;
@@ -19,11 +21,20 @@ bool Pins::updatePins(vector<Pin> vectorPin){
 int Pins::createPin(Pin pin, bool persist){
     int id = 1;
     if (persist) {
-        PreparedStatement *pstmt = this->getNewPreparedStatement("INSERT INTO "+tableName+"(idD, typeC) VALUES(1, ?)");
-        pstmt->setString(1, pin.getTypeStr());
-        pstmt->execute();
+        try {
+            PreparedStatement *pstmt = this->getNewPreparedStatement("INSERT INTO "+tableName+"(idD, typeC) VALUES(1, ?)");
+            pstmt->setString(1, pin.getTypeStr());
+            pstmt->execute();
 
-        delete pstmt;
+            delete pstmt;
+        }
+        catch (SQLException &e) {
+            DBConnector::getInstance().exception(e);
+            return -1;
+        }
+        catch (exception &e) {
+            cerr << e.what() << endl;
+        }
 
         id = getLastInsertId();
         pin.setId(id);
