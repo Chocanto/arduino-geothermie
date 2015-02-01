@@ -10,7 +10,6 @@ class Pins : public DBInstance {
 	private:
 		std::vector<Pin> m_vectorPin;
 		bool updatePins(std::vector<Pin> vectorsPin);
-		bool contains(int id);
 
 	
 	public:
@@ -24,8 +23,17 @@ class Pins : public DBInstance {
         /// \return int id The new ID of the pin if
         ///                persisted or 1 else
 		int createPin(Pin pin, bool persist=true);
-		int deletePin(int id);
-		std::vector<Pin> getPins() const;
+		
+        int deletePin(int id);
+
+        ///
+        /// \brief Check if pins contains a pin with this id
+        /// \param id Id to check
+        ///
+        /// \return bool True if contained, false else
+		bool contains(int id);
+		
+        std::vector<Pin> getPins() const;
         
         ///
         /// \brief Recover every object persisted on BD
