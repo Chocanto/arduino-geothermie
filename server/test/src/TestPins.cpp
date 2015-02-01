@@ -2,7 +2,14 @@
 #include "DBConnector.hpp"
 #include "Pins.hpp"
 
-TEST(Pins, CreatePin) {
+class TestPins : public ::testing::Test {
+
+    protected:
+        virtual void SetUp() {}
+        virtual void TearDown() {}
+};
+
+TEST_F(TestPins, CreatePin) {
     Pin p = Pin(5, 0, 0);
 
     EXPECT_EQ(5, p.getId());
