@@ -28,6 +28,12 @@ int Pins::createPin(Pin pin, bool persist){
         id = getLastInsertId();
         pin.setId(id);
     }
+    else {
+        if (contains(pin.getId())) {
+            throw new runtime_error("Id already used");
+            return -1;
+        }
+    }
 	m_vectorPin.push_back(pin);
 	return id;
 }
