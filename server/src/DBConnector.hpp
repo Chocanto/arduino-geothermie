@@ -29,6 +29,7 @@ class DBConnector {
         void send(string req);
         Connection* getConnection();
         static string dateTimeToString(DateTime date);
+        static void exception(SQLException& );
     
     private:
     
@@ -42,7 +43,6 @@ class DBConnector {
         DBConnector(DBConnector const&);
         void operator=(DBConnector const&);
 
-        static void exception(SQLException& );
 };
 
 #endif

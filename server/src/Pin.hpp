@@ -10,12 +10,12 @@ class Pin{
 		int m_id;
 	
 	public:
-		static int s_lastId;
-		Pin(int,float);
+		Pin(int id=0, int type=0,float iomode=0);
 		int getType() const;
+        std::string getTypeStr() const;
 		float getIomode() const;
 		int getId() const;
-		static int getLastId();
+        void setId(int id) { m_id = id; }
 		std::string toString();
 };
 #endif
