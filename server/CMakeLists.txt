@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 2.6.2)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/CMakeModules)
 set(ARCHIVE_OUTPUT_DIRECTORY lib/)
+add_definitions("-std=c++11")
 
 project(ServerGeothermie CXX C)
 

@@ -1,19 +1,24 @@
 #include <iostream>
-#include "Pin.h"
+#include <string>
+#include "Pin.hpp"
 
 using namespace std;
-int Pin::s_lastId = 0;
 
 //
-Pin::Pin(int type,float iomode):
-	m_type(type),m_iomode(iomode)
-	{
-		++ s_lastId;
-		m_id = s_lastId;
-	}
+Pin::Pin(int id, int type,float iomode):
+	m_id(id),m_type(type),m_iomode(iomode) {}
 //
 int Pin::getType() const{
 	return m_type;
+}
+
+string Pin::getTypeStr() const{
+    if (m_type == 0)
+        return "A";
+    else if (m_type == 1)
+        return "D";
+    else
+        return "";
 }
 //
 float Pin::getIomode() const{
@@ -22,10 +27,6 @@ float Pin::getIomode() const{
 //
 int Pin::getId() const{
 	return m_id;
-}
-//
-int Pin::getLastId(){
-	return s_lastId;
 }
 //
 string Pin::toString(){

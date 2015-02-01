@@ -1,26 +1,37 @@
 #include <iostream>
-#include "Pin.h"
-#include "Pins.h"
+#include <cppconn/resultset.h>
+#include <cppconn/prepared_statement.h>
+
+#include "Pin.hpp"
+#include "Pins.hpp"
+#include "DBInstance.hpp"
 
 using namespace std;
+using namespace sql;
 
-//
-Pins::Pins(vector<Pin> pins):
-	m_vectorPin(pins){}
+Pins::Pins(vector<Pin> pins):DBInstance("Capteur"), m_vectorPin(pins){}
 	
-//
 bool Pins::updatePins(vector<Pin> vectorPin){
 	m_vectorPin = vectorPin;
 	return true; 
 } 
-//
-int Pins::createPin(Pin pin){
-	if ( contains(pin.getId()) )
-		return 0;
+
+int Pins::createPin(Pin pin, bool persist){
+    int id = 1;
+    if (persist) {
+        PreparedStatement *pstmt = this->getNewPreparedStatement("INSERT INTO "+tableName+"(idD, typeC) VALUES(1, ?)");
+        pstmt->setString(1, pin.getTypeStr());
+        pstmt->execute();
+
+        delete pstmt;
+
+        id = getLastInsertId();
+        pin.setId(id);
+    }
 	m_vectorPin.push_back(pin);
-	return 1;
+	return id;
 }
-//
+
 int Pins::deletePin(int id){
 	if ( !contains(id) ){
 		return 0;
@@ -36,20 +47,37 @@ int Pins::deletePin(int id){
 		return 0;
 	}
 }
-//
+
 bool Pins::contains(int id){
-	if ( id > Pin::getLastId() ){
-		return false;
-	}
-	else{
-		for ( int i = 0; i<  m_vectorPin.size(); i++){
-			if ( m_vectorPin[i].getId() == id )
-				return true;
-		}
-		return false;
-	}
+    for ( int i = 0; i<  m_vectorPin.size(); i++){
+        if ( m_vectorPin[i].getId() == id )
+            return true;
+    }
+    return false;
 }
-//
+
 vector<Pin> Pins::getPins() const{ 
 	return m_vectorPin;
+}
+
+void Pins::recoverPersisted() {
+    sql::ResultSet* res = this->getNewPreparedStatement("SELECT * FROM "+tableName)->executeQuery();
+    int total = 0;
+    string typeC;
+    int typeInt;
+    while (res->next()) {
+        total++;
+        typeC = res->getString("typeC");
+        
+        if (typeC == "A")
+            typeInt = 0;
+        else if (typeC == "D")
+            typeInt = 1;
+        else
+            typeInt = -1;
+
+        this->createPin(Pin(res->getInt("idC"), typeInt, 0), false);
+    }
+    delete res;
+    cout << total << " pins found in database." << endl;
 }
