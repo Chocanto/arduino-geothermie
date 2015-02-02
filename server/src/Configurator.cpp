@@ -25,9 +25,9 @@ bool Configurator::readConfig(string file) {
     }
     catch (std::exception const& e) {
         cerr << e.what() << endl;
-        cerr << "Please create a config.json file before executing this application" << endl;
-        exit(1);
+        return false;
     }
+    return true;
 }
 
 ptree* Configurator::getSettings() {
