@@ -4,11 +4,12 @@ Compiler le projet
 Dépendances
 -----------
 
-Le projet nécessite l'installation des bibliothèques suivantes :
+La compilation du projet nécessite l'installation des bibliothèques suivantes :
 
 * cmake
 * libgtest-dev
 * libmysqlcppconn-dev
+* libboost-dev
 
 Compiler le serveur
 -------------------
