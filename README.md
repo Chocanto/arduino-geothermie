@@ -33,10 +33,16 @@ Compiler le binaire arduino
 Installer le binaire dans l'arduino
 ===================================
 
+Configurer le serveur
+=====================
+
+Copiez le fichier `config.json.example` vers `config.json` puis éditez le
+en paramétrant les valeurs disponibles.
+
 Lancer le serveur
 =================
 
-Lancer `./bin/server`
+Lancer `./bin/server` dans un terminal.
 
 Tester le projet
 ================
