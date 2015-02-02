@@ -1,7 +1,7 @@
 #include <iostream>
 
-#include "DBConnector.hpp"
-#include "DemoValues.hpp"
+#include "include/DBConnector.hpp"
+#include "include/DemoValues.hpp"
 
 int main() {
     DBConnector::getInstance().connect("localhost", "interface", "puits", "geothermie");

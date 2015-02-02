@@ -3,10 +3,10 @@
 #include <cppconn/prepared_statement.h>
 #include <cppconn/exception.h>
 
-#include "Pin.hpp"
-#include "Pins.hpp"
-#include "DBInstance.hpp"
-#include "DBConnector.hpp"
+#include "include/Pin.hpp"
+#include "include/Pins.hpp"
+#include "include/DBInstance.hpp"
+#include "include/DBConnector.hpp"
 
 using namespace std;
 using namespace sql;

@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "DBConnector.hpp"
+#include "include/DBConnector.hpp"
 
 class MysqlTest : public ::testing::Test {
     
