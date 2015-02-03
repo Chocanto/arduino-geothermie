@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
-#include "DBConnector.hpp"
-#include "Pins.hpp"
+#include "include/DBConnector.hpp"
+#include "include/Pins.hpp"
 
 class TestPins : public ::testing::Test {
     protected:

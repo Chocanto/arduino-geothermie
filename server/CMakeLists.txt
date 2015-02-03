@@ -16,6 +16,15 @@ else()
     message(FATAL_ERROR "Cannot continue: Mysql C++ Connector is not found")
 endif()
 
+FIND_PACKAGE(Boost REQUIRED)
+if (Boost_FOUND)
+    include_directories(${Boost_INCLUDE_DIRS})
+    set(LIBS ${LIBS} ${Boost_LIBRARIES})
+else()
+    message(FATAL_ERROR "Cannot continue: Boost (with property_tree component) is not found")
+endif()
+
+
 
 set(EXECUTABLE_OUTPUT_PATH bin/${CMAKE_BUILD_TYPE})
 

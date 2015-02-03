@@ -1,8 +1,8 @@
 #include <time.h>
 #include <unistd.h>
 
-#include "DemoValues.hpp"
-#include "DBConnector.hpp"
+#include "include/DemoValues.hpp"
+#include "include/DBConnector.hpp"
 
 DemoValues::DemoValues() {
     srand(time(NULL));

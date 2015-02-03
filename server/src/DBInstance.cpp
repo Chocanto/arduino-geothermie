@@ -1,11 +1,11 @@
-#include "DBInstance.hpp"
+#include "include/DBInstance.hpp"
 
 #include <string>
 #include <cppconn/prepared_statement.h>
 #include <cppconn/connection.h>
 #include <cppconn/resultset.h>
 
-#include "DBConnector.hpp"
+#include "include/DBConnector.hpp"
 
 DBInstance::DBInstance(string tableName) {
     this->tableName = tableName;

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "Pin.hpp"
+#include "include/Pin.hpp"
 
 using namespace std;
 
