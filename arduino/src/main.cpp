@@ -4,7 +4,10 @@
 
 #include <StandardCplusplus.h>
 
-#include "pin.h"
+#include "Arduino.h"
+
+
+//#include "pin.h"
 
 // Initialisation.
 void setup()
