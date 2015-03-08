@@ -16,7 +16,7 @@ string Pin::getTypeStr() const{
     if (m_type == 0)
         return "A";
     else if (m_type == 1)
-        return "D";
+        return "N";
     else
         return "";
 }

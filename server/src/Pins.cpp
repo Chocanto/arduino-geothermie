@@ -88,7 +88,7 @@ void Pins::recoverPersisted() {
         
         if (typeC == "A")
             typeInt = 0;
-        else if (typeC == "D")
+        else if (typeC == "N")
             typeInt = 1;
         else
             typeInt = -1;
