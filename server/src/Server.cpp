@@ -15,4 +15,9 @@ using namespace std;
         DBConnector::getInstance().connect("","","","");
     }
 
-}
+
+
+/*int main(){
+    Server *serveur = new Server();
+    return 0;
+}*/
